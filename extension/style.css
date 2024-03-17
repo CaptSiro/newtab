@@ -1,0 +1,466 @@
+/*basic*/
+:root {
+  --theme: #191E24;
+  --theme-transparent: rgba(13, 20, 30, 0.502);
+  --theme-opposite: #eef;
+  --theme-opposite-2: #ccd;
+  --primary-color: #00FFFF;
+  --primary-color-contrast: #191E24;
+}
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Abel', sans-serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(71, 89, 104);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+img.bgImage {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1500ms;
+}
+img.bgImage.show {
+  opacity: 1;
+  transition: opacity 1500ms;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-opposite-2);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-opposite);
+}
+::selection {
+  color: var(--theme);
+  background-color: var(--theme-opposite);
+}
+
+
+
+
+
+
+/*helper classes*/
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clickable:hover {
+  cursor: pointer;
+}
+.allUnset {
+  all: unset;
+}
+.con {
+  background-color: var(--theme-transparent);
+  color: var(--theme-opposite);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.blink {
+  animation-name: blink;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+}
+
+
+
+
+
+
+
+div.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+div.content div.clockDate {
+  height: max-content;
+  width: 0;
+  overflow: hidden;
+  transition: width 1000ms;
+}
+div.content div.clockDate.show {
+  width: 267px;
+}
+div.content div.container {
+  color: var(--theme-opposite);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  letter-spacing: .12em;
+}
+div.content div.container p.clock {
+  font-size: 60px;
+}
+div.content div.container span.hours {
+  color: var(--theme-opposite);
+}
+div.content div.container span.hours::after {
+  content: " : ";
+  color: var(--primary-color);
+}
+div.content div.container p.date {
+  font-size: 20px;
+  font-weight: 600;
+}
+div.content div.container p.date span.weekDay {
+  color: var(--theme-opposite);
+}
+div.content div.container p.date span.day::after {
+  content: " | ";
+  color: var(--primary-color);
+}
+
+
+
+
+
+
+
+
+div.content div.line {
+  width: 3px;
+  height: 0px;
+  z-index: 1000;
+  margin: 0px 20px;
+  background-color: var(--primary-color);
+  transition: height 1000ms;
+}
+div.content div.line.show {
+  height: 120px;
+}
+
+
+
+
+
+
+
+
+div.content div.containerLinks {
+  height: 0px;
+  transition: height 1000ms;
+}
+div.content div.links {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 133px);
+  max-height: 535px;
+  overflow: auto;
+}
+div.content div.links > * {
+  background-color: #191E24;
+  color: white;
+  width: 123px;
+  height: 123px;
+  margin: 5px;
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: background-color 250ms;
+}
+div.content div.links > a {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 500ms, opacity 1000ms, background-color 250ms;
+}
+div.content div.links > a.show {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 500ms, opacity 1000ms, background-color 250ms;
+}
+div.content div.links > a.delete {
+  transition: scale(0);
+}
+div.content div.links > a:hover {
+  transform: scale(1.075);
+  transition: transform 250ms;
+}
+div.content div.links > * > * {
+  margin: 10px;
+}
+div.content div.links button.add {
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--primary-color-contrast);
+  font-size: 30px;
+  position: relative;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 500ms, opacity 1000ms;
+}
+div.content div.links button.add.show {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 500ms, opacity 1000ms;
+}
+div.content div.links button.add.show:hover {
+  transform: scale(1.075);
+  transition: transform 250ms;
+}
+
+
+
+
+
+
+div.form {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  bottom: 0;
+  top: 0;
+  right: -100%;
+  margin: auto 0;
+  color: #282C34;
+  font-size: 20px;
+
+  transition: right 700ms ease-in;
+}
+div.form.display {
+  right: 1.5vw;
+
+  transition: right 700ms ease-out;
+}
+div.form > p {
+  margin-top: 15px;
+}
+div.form div.preview {
+  background-color: var(--theme-opposite);
+  color: var(--theme);
+  width: 123px;
+  height: 123px;
+  margin: 5px;
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  margin: 20px auto;
+
+  transition: background-color 250ms;
+}
+div.form div.preview > h2 {
+  margin: 10px;
+  font-size: 16px;
+}
+div.form input {
+  all: unset;
+  background-color: var(--theme-opposite-2);
+  padding: 5px;
+  border-radius: 7px;
+  min-width: 200px;
+  margin-left: 10px;
+  color: var(--theme);
+}
+div.form select {
+  background-color: var(--theme-opposite-2);
+  padding: 5px;
+  border-radius: 7px;
+  min-width: 210px;
+  margin-left: 10px;
+  color: #757575;
+  border: unset;
+}
+div.form select:focus {
+  border: unset;
+  outline: unset;
+}
+div.form div.buttons {
+  width: 100%;
+  display: flex;
+  color: var(--theme);
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+div.form div.buttons > button {
+  margin-left: 10px;
+  padding: 4px 7px;
+  border-radius: 7px;
+  background-color: var(--theme-opposite);
+  transform: scale(1);
+  transition: transform 250ms;
+}
+div.form div.buttons > button:hover {
+  transform: scale(1.075);
+  transition: transform 125ms;
+}
+
+
+
+
+
+
+
+
+div.contextMenu {
+  opacity: 0;
+  display: flex;
+  z-index: -2;
+  position: absolute;
+  padding: 10px;
+  color: var(--theme-opposite);
+  flex-direction: column;
+  font-size: 18px;
+  transition: opacity 500ms, z-index 0ms 500ms, left 250ms, top 250ms;
+}
+div.contextMenu input {
+  all: unset;
+  background-color: var(--theme-opposite-2);
+  padding: 5px;
+  border-radius: 7px;
+  min-width: 200px;
+  color: var(--theme);
+}
+div.contextMenu.display {
+  opacity: 1;
+  z-index: 5;
+  transition: opacity 500ms, left 250ms, top 250ms;
+}
+div.contextMenu button {
+  color: var(--theme);
+  border: unset;
+  margin: 5px;
+  padding: 4px 10px;
+  border-radius: 7px;
+  background-color: var(--theme-opposite);
+  transform: scale(1);
+  transition: background-color 250ms, transform 250ms;
+}
+div.contextMenu button:hover {
+  transform: scale(1.075);
+  background-color: #2461a7;
+  transition: background-color 250ms, transform 125ms;
+}
+
+div.edit-link.contextMenu button.delete:hover {
+  transform: scale(1.075);
+  background-color: rgb(204, 39, 27);
+  transition: background-color 250ms, transform 125ms;
+}
+div.add-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+div.genshin-daily-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  overflow: hidden;
+  max-height: 0px;
+  padding: 0px 10px;
+  transition: max-height 1000ms ease-in-out, padding 1000ms ease-in-out;
+}
+div.genshin-daily-login.show {
+  max-height: 260px;
+  padding: 10px 10px;
+  transition: max-height 1000ms ease-in-out, padding 1000ms ease-in-out;
+}
+div.genshin-daily-login > div.timer h1 {
+  color: var(--primary-color);
+}
+div.genshin-daily-login > div.timer h1 > span {
+  color: var(--theme-opposite);
+  margin: 5px;
+}
+div.genshin-daily-login > img {
+  width: 200px;
+  height: 175px;
+  object-fit: cover;
+}
+div.genshin-daily-login > div.buttons > button {
+  border: unset;
+  color: var(--primary-color-contrast);
+  margin: 5px;
+  padding: 4px 10px;
+  border-radius: 7px;
+  background-color: var(--primary-color);
+  transform: scale(1);
+  transition: background-color 250ms, transform 250ms;
+}
+div.genshin-daily-login > div.buttons > button.done:hover {
+  transform: scale(1.075);
+  transition: background-color 250ms, transform 125ms;
+  cursor: pointer;
+}
+
+
+
+.toast {
+  position: fixed;
+  bottom: 0;
+  visibility: hidden;
+  font-size: 1.2rem;
+  max-width: max(40vw, 600px);
+  opacity: 0;
+
+  transition:
+          opacity 250ms 50ms,
+          bottom 300ms ease-in-out,
+          visibility 0ms 300ms;
+}
+.toast.show {
+  bottom: 5vh;
+  visibility: visible;
+  opacity: 1;
+
+  transition:
+          opacity 250ms,
+          bottom 300ms ease-in-out,
+          visibility 0ms;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script defer>
+        const KEY_VIEW_TYPE_MAP = {
+            "o": "only-nsfw",
+            "n": "allow-nsfw",
+            "s": "sfw"
+        };
+        window.addEventListener("keydown", async evt => {
+            const key = evt.key.toLowerCase();
+
+            if (KEY_VIEW_TYPE_MAP[key] === undefined) {
+                return;
+            }
+
+            const typeChange = new URL("http://localhost/newtab/nsfw-setter/rate-img.php");
+            typeChange.searchParams.set("type", KEY_VIEW_TYPE_MAP[key]);
+
+            await fetch(typeChange);
+
+            const imgSource = new URL(document.querySelector("img").src);
+            imgSource.searchParams.set("ignored", String(Date.now()));
+
+            document.querySelector("img").src = imgSource.toString();
+        });
+    </script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+        }
+
+        div {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border: 1px solid white;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <img src="http://localhost/newtab/nsfw-setter/next-img.php" alt="abc">
+    <div><p>[S] Only SFW<br>[N] Allow NSFW<br>[O] Only NSFW</p></div>
+</body>
+</html>
