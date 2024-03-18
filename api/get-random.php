@@ -51,7 +51,7 @@ try {
         throw new Exception();
     }
 
-    $i = random_int(0, $count);
+    $i = random_int(0, $count - 1);
 } catch (Exception $e) {
     $res->setStatusCode(Response::BAD_REQUEST);
     $res->error("Cannot serve random image, because none are available for current settings. [svt={$session->view_type->value}, theme={$req->body->theme}]\n");
