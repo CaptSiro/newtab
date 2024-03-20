@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0ceb393-cf6a-431e-8f34-f342a90e10ba" name="Changes" comment="Fully implemented second version of newtab extension">
+    <list default="true" id="c0ceb393-cf6a-431e-8f34-f342a90e10ba" name="Changes" comment="Fixed off-by-one error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absol/k-means/src/Centroid.php" beforeDir="false" afterPath="$PROJECT_DIR$/absol/k-means/src/Centroid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absol/prominent-color/src/ProminentColor.php" beforeDir="false" afterPath="$PROJECT_DIR$/absol/prominent-color/src/ProminentColor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/get-random.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/get-random.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/background.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extension/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/extension/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/session.json" beforeDir="false" afterPath="$PROJECT_DIR$/session.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +120,10 @@
       <workItem from="1710618817036" duration="9922000" />
       <workItem from="1710667981496" duration="4971000" />
       <workItem from="1710694525551" duration="403000" />
-      <workItem from="1710771498161" duration="84000" />
+      <workItem from="1710771498161" duration="728000" />
+      <workItem from="1710919834705" duration="68000" />
+      <workItem from="1710955509356" duration="9000" />
+      <workItem from="1710971329704" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="Fully implemented second version of newtab extension">
       <option name="closed" value="true" />
@@ -129,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710673739966</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed off-by-one error">
+      <option name="closed" value="true" />
+      <created>1710771699842</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710771699842</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Default" />
     <MESSAGE value="Fully implemented second version of newtab extension" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented second version of newtab extension" />
+    <MESSAGE value="Fixed off-by-one error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed off-by-one error" />
   </component>
 </project>
